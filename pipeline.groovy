@@ -1,14 +1,40 @@
+//pipeline {
+//     agent any
+//     stages {
+//         stage('git_pull') {
+//             steps {
+//                 echo "pull success"
+//             }
+//         }
+//         stage('build') {
+//             steps {
+//                  echo "build success"
+//             }
+//         }
+//         stage('test') {
+//             steps {
+//                 echo "test success"
+//             }
+//         }
+//                 stage('depoly') {
+//             steps {
+//                 sh 'deploy success'
+//             }
+//         }
+//     }
+// }
+
 pipeline {
-    agent any
+    agent {label 'node'}
     stages {
-        stage('git_pull') {
+        stage('git_checkout') {
             steps {
-                echo "pull success"
+               git branch: 'main', url: 'https://github.com/Anilbamnote/student-ui-app.git'
             }
         }
         stage('build') {
             steps {
-                 echo "build success"
+               echo " build sucess"
             }
         }
         stage('test') {
@@ -16,9 +42,9 @@ pipeline {
                 echo "test success"
             }
         }
-        stage('deploy') {
+                stage('depoly') {
             steps {
-                echo "deploy sucess"
+               echo "deploy success"
             }
         }
     }
